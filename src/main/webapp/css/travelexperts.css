@@ -1,0 +1,23 @@
+.navbar {
+    opacity: 0.8;
+}
+
+.home-section {
+    background-image: url("../images/Santorini.jpg");
+    min-height: 700px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.home-section .dark-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 700px;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.home-inner{
+    padding-top: 160px;
+}
