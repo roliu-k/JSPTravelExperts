@@ -5,7 +5,7 @@
 
 <body>
 <div class="container col-xs-6 col-8">
-    <form method="post" action="login">
+    <form>
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" class="form-control" id="username" placeholder="Enter Username" name="user">
@@ -13,8 +13,27 @@
         <div class="form-group">
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" placeholder="Password" name="pwd">
+            <small class="text-danger" id="errMsg"></small>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+
+    <button class="btn btn-primary" id="authenticate">Submit</button>
+
 </div>
 </body>
+
+<script>
+    $("#authenticate").click(function(){
+        var username = $("#username").val();
+        var pwd = $("#password").val();
+        $.get("api/customers/getpassword/" + username, function(data){
+            if(data != pwd){
+                $("#errMsg").text("You have entered either wrong username or password.");
+            }
+            else{
+                sessionStorage.setItem("user", username);
+                window.location.replace("index.jsp");
+            }
+        });
+    })
+</script>

@@ -23,13 +23,13 @@
                     <a href="#home-section" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="login" class="nav-link">Login</a>
+                    <a href="login.jsp" class="nav-link">Login</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" id="account-list" data-toggle="dropdown">Account</a>
                     <div class="dropdown-menu" aria-labelledby="account-list">
-                        <a class="dropdown-item" href="account">Profile</a>
-                        <a class="dropdown-item" href="mybookings">Bookings</a>
+                        <a class="dropdown-item" href="account.jsp">Profile</a>
+                        <a class="dropdown-item" href="mybookings.jsp">Bookings</a>
                     </div>
                 </li>
             </ul>

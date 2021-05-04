@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "customers", schema = "travelexperts")
@@ -16,6 +17,8 @@ public class Customer {
     private String CustHomePhone;
     private String CustBusPhone;
     private String CustEmail;
+    private String CustUsername;
+    private String CustPassword;
 
     @Id
     @Column(name = "CustomerId", nullable = false)
@@ -169,6 +172,26 @@ public class Customer {
         result = 31 * result + (CustBusPhone != null ? CustBusPhone.hashCode() : 0);
         result = 31 * result + (CustEmail != null ? CustEmail.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "CustUsername", nullable = false, length = 50)
+    public String getCustUsername() {
+        return CustUsername;
+    }
+
+    public void setCustUsername(String custUsername) {
+        CustUsername = custUsername;
+    }
+
+    @Basic
+    @Column(name = "CustPassword", nullable = false, length = 50)
+    public String getCustPassword() {
+        return CustPassword;
+    }
+
+    public void setCustPassword(String custPassword) {
+        CustPassword = custPassword;
     }
 }
 

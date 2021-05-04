@@ -20,7 +20,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="EclipseLink" />
         <datasource-mapping>
-          <factory-entry name="default" value="7a338e40-f3c7-4508-97f1-fc8aeb8c63cd" />
+          <factory-entry name="default" value="8bcf0b5a-25a3-4573-9b28-07e1b7b264c5" />
         </datasource-mapping>
         <naming-strategy-map />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
