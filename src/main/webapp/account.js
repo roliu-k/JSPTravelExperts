@@ -49,7 +49,6 @@ $(document).ready(function(){
             CustUsername : custUsername,
             CustPassword : custPassword
         }
-        var message = "";
         $.ajax({
             type: "PUT",
             url: "api/customers/updateaccount",
@@ -57,7 +56,6 @@ $(document).ready(function(){
             data: JSON.stringify(updateData),
             async: false
         }).always(function(data){
-            debugger
             alert(data.message);
             $("#updateMsg").text(data.message);
 
@@ -66,3 +64,19 @@ $(document).ready(function(){
     });
 });
 
+$(document).ready(function(){
+    $(document).on('click', '#deleteCust', function(){
+        var custID = $("#custID").val();
+        $.ajax({
+            type: "DELETE",
+            url: "api/customers/deleteaccount/" + custID,
+            contentType: "application/json",
+            async: false
+        }).success(function(data){
+            sessionStorage.clear();
+            window.location.replace("logout.jsp");
+
+        });
+
+    });
+});

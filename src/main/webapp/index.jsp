@@ -25,6 +25,9 @@
                 <li class="nav-item">
                     <a href="login.jsp" class="nav-link">Login</a>
                 </li>
+                <li class="nav-item">
+                    <a href="package.jsp" class="nav-link">Package</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" id="account-list" data-toggle="dropdown">Account</a>
                     <div class="dropdown-menu" aria-labelledby="account-list">

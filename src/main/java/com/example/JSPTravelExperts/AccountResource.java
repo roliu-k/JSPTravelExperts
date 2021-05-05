@@ -58,4 +58,24 @@ public class AccountResource {
             return "{\"message\" : \"Update not successful\"}";
         }
     }
+
+    @DELETE
+    @Path("/deleteaccount/{ custID }")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String deleteaccount(@PathParam("custID") int custID) {
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("default");
+        EntityManager em = factory.createEntityManager();
+        Customer customerEntity = em.find(Customer.class, custID);
+        em.getTransaction().begin();
+        em.remove(customerEntity);
+        em.getTransaction().commit();
+        if (em.contains(customerEntity)){
+            em.getTransaction().rollback();
+            em.close();
+            return "{ 'message' : 'Delete failed }";
+        }else {
+            em.close();
+            return "{ 'message' : 'Delete successful }";
+        }
+    }
 }
