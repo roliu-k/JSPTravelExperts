@@ -5,10 +5,7 @@ import model.Customer;
 
 import javax.persistence.*;
 import javax.print.attribute.standard.Media;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 @Path("/customers")
@@ -39,5 +36,26 @@ public class AccountResource {
         String password = (String) query.getSingleResult();
 
         return new Gson().toJson(password);
+    }
+
+    @PUT
+    @Path("/updateaccount")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String updateAccount(String jsonString) {
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("default");
+        EntityManager em = factory.createEntityManager();
+        Gson gson = new Gson();
+        Customer customer = gson.fromJson(jsonString, Customer.class);
+        em.getTransaction().begin();
+        Customer result = em.merge(customer);
+        em.getTransaction().commit();
+
+        if (result != null){
+            return "{\"message\" : 'Update Successful'}";
+        }
+        else {
+            return "{\"message\" : 'Update not successful'}";
+        }
     }
 }

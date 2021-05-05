@@ -8,10 +8,10 @@
 <body>
 <div class="container pt-4">
 
-    <%--    <form action="account" id="">--%>
     <form>
         <h3 class="text-center" style="margin:1em auto;">Customer Info</h3>
-
+        <!-- hidden field for customer ID -->
+        <input class="form-control" type="text" id='custID' hidden>
         <div class="row d-flex justify-content-center">
             <div class="form-group col-md-4">
                 <label class="control-label">First Name</label>
@@ -114,8 +114,9 @@
         </div>
 
         <div class="row justify-content-center">
+            <div id="updateMsg">heelo</div>
             <div class="form-group" action="#">
-                <input type="submit" value="Update" onclick="updateUser()" class="btn btn-primary btn-lg" />
+                <input type="submit" value="Update" id="updateCust" class="btn btn-primary btn-lg" />
             </div>
         </div>
     </form>
