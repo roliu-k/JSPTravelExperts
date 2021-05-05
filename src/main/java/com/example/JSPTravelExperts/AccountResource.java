@@ -22,6 +22,8 @@ public class AccountResource {
         Customer customer = query.getSingleResult();
 
         return new Gson().toJson(customer);
+
+
     }
 
     @GET

@@ -7,6 +7,7 @@
 
         <class>model.Customer</class>
         <class>model.Package</class>
+        <class>model.Bookings</class>
         <properties>
             <property name="eclipselink.jdbc.url" value="jdbc:mariadb://localhost:3306/travelexperts"/>
             <property name="eclipselink.jdbc.driver" value="org.mariadb.jdbc.Driver"/>
