@@ -52,10 +52,10 @@ public class AccountResource {
         em.getTransaction().commit();
 
         if (result != null){
-            return "{\"message\" : 'Update Successful'}";
+            return "{\"message\" : \"Update Successful\"}";
         }
         else {
-            return "{\"message\" : 'Update not successful'}";
+            return "{\"message\" : \"Update not successful\"}";
         }
     }
 }

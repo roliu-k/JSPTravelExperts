@@ -59,6 +59,8 @@ $(document).ready(function(){
         }).always(function(data){
             debugger
             alert(data.message);
+            $("#updateMsg").text(data.message);
+
         });
 
     });
