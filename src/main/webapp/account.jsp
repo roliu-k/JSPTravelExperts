@@ -117,7 +117,6 @@
             <div id="updateMsg"></div>
             <div class="form-group" action="#">
                 <input type="submit" value="Update" id="updateCust" class="btn btn-primary btn-lg" />
-                <input type="button" value="Delete" id="deleteCust" class="btn btn-primary btn-lg" />
             </div>
 
         </div>
