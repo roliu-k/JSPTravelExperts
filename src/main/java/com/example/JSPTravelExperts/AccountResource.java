@@ -3,6 +3,7 @@ package com.example.JSPTravelExperts;
 import com.google.gson.Gson;
 import model.Customer;
 
+import javax.annotation.security.DenyAll;
 import javax.persistence.*;
 import javax.print.attribute.standard.Media;
 import javax.ws.rs.GET;
@@ -13,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 
 @Path("/customers")
 public class AccountResource {
+    @DenyAll
     @GET
     @Path("getaccount/{ username }")
     @Produces(MediaType.APPLICATION_JSON)

@@ -26,4 +26,38 @@
   <title>${param.title}</title>
 
 </head>
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a href="#" class="navbar-brand">Travel Experts LOGO</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="navbarNav">
+      <form action="" class="form-inline">
+        <input type="search" class="form-control" placeholder="search">
+        <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+      </form>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a href="#home-section" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item active">
+          <a href="#home-section" class="nav-link">Packages</a>
+        </li>
+        <li class="nav-item">
+          <a href="login.jsp" class="nav-link">Login</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" id="account-list" data-toggle="dropdown">Account</a>
+          <div class="dropdown-menu" aria-labelledby="account-list">
+            <a class="dropdown-item" href="account.jsp">Profile</a>
+            <a class="dropdown-item" href="booking.jsp">Bookings</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 </html>
