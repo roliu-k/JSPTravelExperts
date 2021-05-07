@@ -23,22 +23,19 @@ public class AuthenticateResource {
         JsonObject error = new JsonObject();
         error.addProperty("Message", "Update unsuccessful");
         error.addProperty("Token", 0);
-        error.addProperty("CustID", 0);
-        error.addProperty("Username", "");
         try {
 
             // Authenticate the user using the credentials provided
             int custID = authenticate(username, password);
             if(custID != 0) {
                 // Issue a token for the user
-                String token = issueToken(username);
+                String token = issueToken(custID);
                 // Return the token on the response
 
                 JsonObject success = new JsonObject();
                 success.addProperty("Message", "Update Success");
                 success.addProperty("Token", token);
-                success.addProperty("CustID", custID);
-                success.addProperty("Username", username);
+
 
                 return success.toString();
             }
@@ -72,7 +69,7 @@ public class AuthenticateResource {
         return custID;
     }
 
-    private String issueToken(String username) {
+    private String issueToken(int custID) {
         // Issue a token (can be a random String persisted to a database or a JWT token)
         // The issued token must be associated to a user
         // Return the issued token
@@ -80,7 +77,7 @@ public class AuthenticateResource {
         try {
             Algorithm algorithm = Algorithm.HMAC256("secret");
             token = JWT.create()
-                    .withClaim("username", username)
+                    .withClaim("customerID", custID)
                     .withIssuer("auth0")
                     .sign(algorithm);
 

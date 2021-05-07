@@ -38,8 +38,6 @@
                 }
                 else {
                     sessionStorage.setItem("token", data.Token);
-                    sessionStorage.setItem("username", data.Username);
-                    sessionStorage.setItem("customerID", data.CustID);
                     window.location.replace("index.jsp");
                 }
             }

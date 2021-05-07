@@ -128,10 +128,10 @@
 <script>
 
     $(document).ready(function(){
-        let customerID = sessionStorage.getItem("customerID");
+        let token = sessionStorage.getItem("token");
         $.ajax({
             type: "POST",
-            data: {"customerID" :customerID},
+            data: {"token" :token},
             url: "api/customers/getaccount/",
             async: false,
             success: function (data) {

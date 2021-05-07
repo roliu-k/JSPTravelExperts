@@ -1,5 +1,6 @@
 package com.example.JSPTravelExperts;
 
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.google.gson.Gson;
 import model.Customer;
 import org.springframework.security.access.annotation.Secured;
@@ -19,7 +20,9 @@ public class AccountResource {
     @POST
     @Path("/getaccount")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getAccount(@FormParam("customerID") int customerID) {
+    public String getAccount(@FormParam("token") String token) {
+
+        int customerID = TokenResource.verifyToken(token);
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("default");
         EntityManager em = factory.createEntityManager();
         TypedQuery<Customer> query = em.createQuery("select c from Customer c where c.customerId =:customerID", Customer.class);
@@ -27,8 +30,6 @@ public class AccountResource {
         Customer customer = query.getSingleResult();
 
         return new Gson().toJson(customer);
-
-
     }
 
 
@@ -53,23 +54,5 @@ public class AccountResource {
         }
     }
 
-    @DELETE
-    @Path("/deleteaccount/{ custID }")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public String deleteaccount(@PathParam("custID") int custID) {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("default");
-        EntityManager em = factory.createEntityManager();
-        Customer customerEntity = em.find(Customer.class, custID);
-        em.getTransaction().begin();
-        em.remove(customerEntity);
-        em.getTransaction().commit();
-        if (em.contains(customerEntity)){
-            em.getTransaction().rollback();
-            em.close();
-            return "{ 'message' : 'Delete failed }";
-        }else {
-            em.close();
-            return "{ 'message' : 'Delete successful }";
-        }
-    }
+
 }
