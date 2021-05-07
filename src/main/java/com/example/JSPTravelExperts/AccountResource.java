@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import model.Customer;
 import org.springframework.security.access.annotation.Secured;
 
+import javax.annotation.security.DenyAll;
 import javax.persistence.*;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
