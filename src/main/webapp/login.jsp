@@ -9,11 +9,11 @@
         <form>
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" placeholder="Enter Username" name="user">
+                <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password" name="pwd">
+                <input type="password" class="form-control" id="password" placeholder="Password" name="password">
                 <small class="text-danger" id="errMsg"></small>
             </div>
         </form>
