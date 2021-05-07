@@ -2,23 +2,28 @@ package com.example.JSPTravelExperts;
 
 import com.google.gson.Gson;
 import model.Customer;
+import org.springframework.security.access.annotation.Secured;
 
 import javax.persistence.*;
-import javax.print.attribute.standard.Media;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionContext;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.Enumeration;
+
 
 @Path("/customers")
 public class AccountResource {
-    @GET
-    @Path("getaccount/{ username }")
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getAccount(@PathParam("username") String username) {
 
+    @POST
+    @Path("/getaccount")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAccount(@FormParam("customerID") int customerID) {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("default");
         EntityManager em = factory.createEntityManager();
-        TypedQuery<Customer> query = em.createQuery("select c from Customer c where c.custUsername =:username", Customer.class);
-        query.setParameter("username", username);
+        TypedQuery<Customer> query = em.createQuery("select c from Customer c where c.customerId =:customerID", Customer.class);
+        query.setParameter("customerID", customerID);
         Customer customer = query.getSingleResult();
 
         return new Gson().toJson(customer);
@@ -26,19 +31,6 @@ public class AccountResource {
 
     }
 
-    @GET
-    @Path("getpassword/{ username }")
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getPassword(@PathParam("username") String username) {
-
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("default");
-        EntityManager em = factory.createEntityManager();
-        Query query = em.createQuery("select c.custPassword from Customer c where c.custUsername =:username");
-        query.setParameter("username", username);
-        String password = (String) query.getSingleResult();
-
-        return new Gson().toJson(password);
-    }
 
     @PUT
     @Path("/updateaccount")

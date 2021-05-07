@@ -5,35 +5,45 @@
 
 <body>
 <div class="container col-xs-6 col-8">
-    <form>
+    <form id="form" method="post">
         <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="Enter Username" name="user">
+            <input value="lEnison" type="text" class="form-control" id="username" placeholder="Enter Username" name="username">
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Password" name="pwd">
+            <input value="Password!" type="password" class="form-control" id="password" placeholder="Password" name="password">
             <small class="text-danger" id="errMsg"></small>
         </div>
     </form>
+        <button class="btn btn-primary" id="authenticate">Submit</button>
 
-    <button class="btn btn-primary" id="authenticate">Submit</button>
+
 
 </div>
 </body>
 
+
 <script>
+    var username = $("#username").val();
     $("#authenticate").click(function(){
-        var username = $("#username").val();
-        var pwd = $("#password").val();
-        $.get("api/customers/getpassword/" + username, function(data){
-            if(data != pwd){
-                $("#errMsg").text("You have entered either wrong username or password.");
-            }
-            else{
-                sessionStorage.setItem("user", username);
-                window.location.replace("index.jsp");
+        $.ajax({
+            type: "POST",
+            data: $('form').serializeArray(),
+            url: "api/authenticate/login/",
+            async: false,
+            success: function (data) {
+                if (data.Message == "Update unsuccessful"){
+                    $("#errMsg").text("You have entered either wrong username or password.");
+                }
+                else {
+                    sessionStorage.setItem("token", data.Token);
+                    sessionStorage.setItem("username", data.Username);
+                    sessionStorage.setItem("customerID", data.CustID);
+                    window.location.replace("index.jsp");
+                }
             }
         });
     })
 </script>
+
