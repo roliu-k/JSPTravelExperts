@@ -25,14 +25,15 @@
         <div class="d-flex flex-column flex-md-row flex-column flex-sm-row align-items-center justify-content-center" id="package-row-two">
 
         </div>
+        <form action="bookingdetail">
+            <input type="hidden" name="packageId" id="pkgId" value="" />
+        </form>
     </div>
 </div>
 </body>
 
 
 <script>
-    // $("#my_image").attr("src","second.jpg");
-    // $("#my_image").attr("alt","");
     $.get("api/packages/getallpackages", function (data){
         var i;
         for(i=0; i<3; i++){
@@ -40,19 +41,29 @@
                 "images/Caribbean.jpg' " +
                 "alt='Caribbean'> <div class='dark-overlay'></div>" +
                 "<div class='card-body text-light'> <h5 class='card-title'>" +
-                data[i].PkgName + "</h5> " + data[i].PkgDesc +
-                "<p class='card-text'>"+ "</p><a href='#' class='btn btn-secondary btn-sm'>More Details</a></div></div>");
+                data[i].PkgName + "</h5> " +
+                "<p class='card-text'>"+ data[i].PkgDesc + "</p>" +
+                "<a class='btn btn-secondary btn-sm'>More Details</a></div></div>");
         }
 
         for(i=3; i<6; i++){
-            $("#package-row-two").append("<div class='card package-card'> <img class='card-img-top' src='" +
-                "images/Caribbean.jpg' " +
-                "alt='Caribbean'> <div class='dark-overlay'></div>" +
-                "<div class='card-body text-light'> <h5 class='card-title'>" +
-                data[i].PkgName + "</h5> " + data[i].PkgDesc +
-                "<p class='card-text'>"+ "</p><a href='#' class='btn btn-secondary btn-sm'>More Details</a></div></div>");
+            $("#package-row-two").append("<div class='card package-card'> <img class='card-img' src='" +
+                "images/Caribbean.jpg' " + "alt='Caribbean'> " +
+                "<div class='card-img-overlay text-center text-light'>" +
+                "<h5 class='card-title'>" + data[i].PkgName + "</h5> " +
+                "<div class='card-hover-display'>" +
+                "<p class='card-text'>"+ data[i].PkgDesc +"</p>" +
+                "<button class='btn btn-secondary btn-sm' onclick='viewdetail()'>More Details</button>" +
+                "</div></div></div>");
         }
     });
+
+    $("#pkgId").val("1");
+
+    function viewdetail()
+    {
+        $("form").submit();
+    };
 
 
 </script>

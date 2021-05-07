@@ -4,6 +4,7 @@
 
 body{
     background-color: #252833;
+    color: white;
 }
 
 .home-section {
@@ -72,10 +73,10 @@ hr{
 .card{
     border: none;
     overflow: hidden;
+    background-color: #838EA1;
 }
 
 .card-body{
-    background-color: #838EA1;
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
 }
@@ -92,8 +93,28 @@ hr{
 .card img{
     transition: transform .3s ease;
 }
+
 .card:hover img{
     -ms-transform: scale(1.1); /* IE 9 */
     -webkit-transform: scale(1.1); /* Safari 3-8 */
     transform: scale(1.1);
 }
+
+.card .card-img-overlay{
+    background-color: rgba(0,0,0,0.5);
+}
+
+.card .card-hover-display{
+    visibility: hidden;
+    opacity: 0;
+
+    transition: opacity .3s, visibility .3s;
+}
+
+.card .card-img-overlay:hover .card-hover-display{
+    visibility: visible;
+    opacity: 1;
+}
+
+
+

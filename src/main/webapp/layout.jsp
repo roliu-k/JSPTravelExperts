@@ -40,9 +40,9 @@
       </form>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a href="#home-section" class="nav-link">Home</a>
+          <a href="index.jsp" class="nav-link">Home</a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
           <a href="#home-section" class="nav-link">Packages</a>
         </li>
         <li class="nav-item">
@@ -52,7 +52,7 @@
           <a href="#" class="nav-link dropdown-toggle" id="account-list" data-toggle="dropdown">Account</a>
           <div class="dropdown-menu" aria-labelledby="account-list">
             <a class="dropdown-item" href="account.jsp">Profile</a>
-            <a class="dropdown-item" href="booking.jsp">Bookings</a>
+            <a class="dropdown-item" href="booking.jsp">Booking</a>
           </div>
         </li>
       </ul>

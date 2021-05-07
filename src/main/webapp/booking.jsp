@@ -38,7 +38,7 @@
       <th></th>
     </tr>
     </thead>
-    <tbody>
+    <tbody id="table-content">
 
     </tbody>
   </table>
