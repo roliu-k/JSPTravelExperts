@@ -20,7 +20,7 @@ public class BookingResources {
 
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("default");
         EntityManager em = factory.createEntityManager();
-        Query query = em.createQuery("select b from Bookings b where b.customerId =" + custID, Bookings.class);
+        Query query = em.createQuery("select b from Bookings b where b.CustomerId =" + custID, Bookings.class);
         List<Bookings> list = query.getResultList();
 
         Gson gson = new Gson();
@@ -39,10 +39,14 @@ public class BookingResources {
         Gson gson = new Gson();
         Bookings bookings = gson.fromJson(jsonString, Bookings.class);
         em.getTransaction().begin();
-        em.persist(bookings);
+        Bookings result = em.merge(bookings);
         em.getTransaction().commit();
+        if (result == null){
+            return "{\"message\" : \"There is an error. Please try again later or contact Travel Experts\"}";
+        } else {
+            return "{\"message\" : \"Package purchased!\"}";
+        }
 
-        return "{'message' : 'Update Successful'}";
 
     }
 
@@ -59,10 +63,11 @@ public class BookingResources {
         if (em.contains(bookings)){
             em.getTransaction().rollback();
             em.close();
-            return "{ 'message' : 'Delete failed }";
+            return "{\"message\":\"Delete failed\"}";
         }else {
             em.close();
-            return "{ 'message' : 'Delete successful }";
+            return "{\"message\":\"Delete successful\"}";
         }
+
     }
 }

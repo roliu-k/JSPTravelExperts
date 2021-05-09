@@ -1,6 +1,5 @@
 package com.example.JSPTravelExperts;
 
-import com.auth0.jwt.interfaces.DecodedJWT;
 import com.google.gson.Gson;
 import model.Customer;
 import org.springframework.security.access.annotation.Secured;
@@ -23,7 +22,7 @@ public class AccountResource {
     @Produces(MediaType.APPLICATION_JSON)
     public String getAccount(@FormParam("token") String token) {
 
-        int customerID = TokenResource.verifyToken(token);
+        int customerID = Integer.parseInt(TokenResource.verifyToken(token));
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("default");
         EntityManager em = factory.createEntityManager();
         TypedQuery<Customer> query = em.createQuery("select c from Customer c where c.customerId =:customerID", Customer.class);
