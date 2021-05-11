@@ -1,8 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <jsp:include page="layout.jsp">
-    <jsp:param name="title" value="Login"/>
+    <jsp:param name="title" value="Account"/>
 </jsp:include>
-
 
 <body>
 <div class="container pt-4">
@@ -96,8 +95,6 @@
             </div>
         </div>
 
-
-
         <div class="row justify-content-center">
             <div class="form-group col-md-4">
                 <label class="control-label">Username</label>
@@ -114,16 +111,17 @@
 
     </form>
     <div class="row justify-content-center">
-        <div id="updateMsg"></div>
         <div class="form-group" action="#">
-            <input type="submit" value="Update" id="updateCust" class="btn btn-primary btn-lg" />
+            <input type="submit" value="Update" id="updateCust" class="btn btn-primary" style="width:12rem"/>
         </div>
-
     </div>
+    <p id="updateMsg" class="text-danger"></p>
 
 
 </div>
 </body>
+
+<jsp:include page="footer.jsp"></jsp:include>
 
 <script>
 

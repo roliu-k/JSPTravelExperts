@@ -4,23 +4,27 @@
 </jsp:include>
 
 <body>
-<div class="login-inner">
-    <div class="container col-xs-6 col-8">
-        <form>
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username">
+<div class="content-wrapper">
+    <div class="login-inner">
+        <div class="container">
+            <div class="col-6 float-left">
+                <form>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                        <small class="text-danger" id="errMsg"></small>
+                    </div>
+                </form>
+                <button class="btn btn-primary col-6 mt-2" id="authenticate">Submit</button>
             </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password" name="password">
-                <small class="text-danger" id="errMsg"></small>
-            </div>
-        </form>
-
-        <button class="btn btn-primary" id="authenticate">Submit</button>
+        </div>
     </div>
 </div>
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 
 
