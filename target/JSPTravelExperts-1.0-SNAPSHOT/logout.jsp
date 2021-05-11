@@ -1,17 +1,14 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <jsp:include page="layout.jsp">
-    <jsp:param name="title" value="Login"/>
+    <jsp:param name="title" value="Logout"/>
 </jsp:include>
-<html>
-<head>
-    <title>Logout</title>
-</head>
+
 <body>
-
+<div class="content-wrapper">
     <h1>Logout was successful.</h1>
-
+</div>
+    <jsp:include page="footer.jsp"></jsp:include>
 </body>
-</html>
 
 <script>
     $(document).ready(function(){

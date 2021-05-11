@@ -34,19 +34,15 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="navbar-collapse collapse" id="navbarNav">
-      <form action="" class="form-inline">
-        <input type="search" class="form-control" placeholder="search">
-        <button class="btn btn-primary"><i class="fas fa-search"></i></button>
-      </form>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
           <a href="index.jsp" class="nav-link">Home</a>
         </li>
         <li class="nav-item">
-          <a href="#home-section" class="nav-link">Packages</a>
+          <a href="package.jsp" class="nav-link">Packages</a>
         </li>
         <li class="nav-item">
-          <a href="login.jsp" class="nav-link">Login</a>
+          <a href="login.jsp" class="nav-link" id="loginLogout">Login</a>
         </li>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" id="account-list" data-toggle="dropdown">Account</a>
@@ -60,4 +56,23 @@
   </div>
 </nav>
 
+
 </html>
+
+<script>
+  $(document).ready(function(){
+    //Customers has not been authenticated
+    if (sessionStorage.getItem("token") == null){
+      $("#loginLogout").text("Login");
+      $("#loginLogout").attr("href", "login.jsp");
+      $("#account-list").hide();
+
+    }
+    //Customers has been authenticated
+    else{
+      $("#loginLogout").text("Logout");
+      $("#loginLogout").attr("href", "logout.jsp");
+      $("#account-list").show();
+    }
+  });
+</script>

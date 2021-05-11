@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
-public class bookingNo {
+public class BookingNoGenerator {
     public static String generateBookingNo()
     {
         final String source = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

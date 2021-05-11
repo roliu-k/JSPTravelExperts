@@ -67,23 +67,23 @@
         var i;
 
         for(i=0; i<6; i++){
-            $(".row").append("<div class='col'> <div class='card package-card'> <img class='card-img' src='" +
-                "images/Caribbean.jpg' " + "alt='Caribbean'> " +
+            $(".row").append("<div class='col'> <div class='card package-card' style='height: 13.25rem'>" +
+                "<img class='card-img' src='" + data[i].Picture + "'>" +
                 "<div class='card-img-overlay text-center text-light pt-4'>" +
                 "<h5 class='card-title'>" + data[i].PkgName + "</h5> " +
                 "<div class='card-hover-display p-4'>" +
                 "<p class='card-text'>" + data[i].PkgDesc + "</p>" +
-                "<button class='btn btn-secondary btn-sm' onclick='viewdetail()'>More Details</button>" +
-                "</div></div>" +
                 "<form action='bookingdetail'><input type='hidden' name='packageId' id='pkgId' " +
-                "value='" + i + "'/></form></div></div>");
+                "value='" + (i+1) + "'/>" +
+                "<button class='btn btn-secondary btn-sm' onclick='viewdetail()'>More Details</button>" +
+                "</form></div></div></div></div>");
         }
     });
 
     function viewdetail()
     {
-        $("form").submit();
-    };
+        $(this).siblings("form").submit();
+    }
 
 
     $(document).ready(function(){
