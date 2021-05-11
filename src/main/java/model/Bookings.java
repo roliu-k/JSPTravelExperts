@@ -8,52 +8,52 @@ import java.sql.Timestamp;
 
 @Entity
 public class Bookings {
-    private int bookingId;
-    private Timestamp bookingDate;
-    private String bookingNo;
-    private Double travelerCount;
-    private Integer customerId;
-    private String tripTypeId;
-    private Integer packageId;
+    private int BookingId;
+    private String BookingDate;
+    private String BookingNo;
+    private Double TravelerCount;
+    private Integer CustomerId;
+    private String TripTypeId;
+    private Integer PackageId;
 
     @Id
     @Column(name = "BookingId")
     public int getBookingId() {
-        return bookingId;
+        return BookingId;
     }
 
     public void setBookingId(int bookingId) {
-        this.bookingId = bookingId;
+        this.BookingId = bookingId;
     }
 
     @Basic
     @Column(name = "BookingDate")
-    public Timestamp getBookingDate() {
-        return bookingDate;
+    public String getBookingDate() {
+        return BookingDate;
     }
 
-    public void setBookingDate(Timestamp bookingDate) {
-        this.bookingDate = bookingDate;
+    public void setBookingDate(String bookingDate) {
+        this.BookingDate = bookingDate;
     }
 
     @Basic
     @Column(name = "BookingNo")
     public String getBookingNo() {
-        return bookingNo;
+        return BookingNo;
     }
 
     public void setBookingNo(String bookingNo) {
-        this.bookingNo = bookingNo;
+        this.BookingNo = bookingNo;
     }
 
     @Basic
     @Column(name = "TravelerCount")
     public Double getTravelerCount() {
-        return travelerCount;
+        return TravelerCount;
     }
 
     public void setTravelerCount(Double travelerCount) {
-        this.travelerCount = travelerCount;
+        this.TravelerCount = travelerCount;
     }
 
     @Override
@@ -63,11 +63,11 @@ public class Bookings {
 
         Bookings bookings = (Bookings) o;
 
-        if (bookingId != bookings.bookingId) return false;
-        if (bookingDate != null ? !bookingDate.equals(bookings.bookingDate) : bookings.bookingDate != null)
+        if (BookingId != bookings.BookingId) return false;
+        if (BookingDate != null ? !BookingDate.equals(bookings.BookingDate) : bookings.BookingDate != null)
             return false;
-        if (bookingNo != null ? !bookingNo.equals(bookings.bookingNo) : bookings.bookingNo != null) return false;
-        if (travelerCount != null ? !travelerCount.equals(bookings.travelerCount) : bookings.travelerCount != null)
+        if (BookingNo != null ? !BookingNo.equals(bookings.BookingNo) : bookings.BookingNo != null) return false;
+        if (TravelerCount != null ? !TravelerCount.equals(bookings.TravelerCount) : bookings.TravelerCount != null)
             return false;
 
         return true;
@@ -75,40 +75,40 @@ public class Bookings {
 
     @Override
     public int hashCode() {
-        int result = bookingId;
-        result = 31 * result + (bookingDate != null ? bookingDate.hashCode() : 0);
-        result = 31 * result + (bookingNo != null ? bookingNo.hashCode() : 0);
-        result = 31 * result + (travelerCount != null ? travelerCount.hashCode() : 0);
+        int result = BookingId;
+        result = 31 * result + (BookingDate != null ? BookingDate.hashCode() : 0);
+        result = 31 * result + (BookingNo != null ? BookingNo.hashCode() : 0);
+        result = 31 * result + (TravelerCount != null ? TravelerCount.hashCode() : 0);
         return result;
     }
 
     @Basic
     @Column(name = "CustomerId")
     public Integer getCustomerId() {
-        return customerId;
+        return CustomerId;
     }
 
     public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
+        this.CustomerId = customerId;
     }
 
     @Basic
     @Column(name = "TripTypeId")
     public String getTripTypeId() {
-        return tripTypeId;
+        return TripTypeId;
     }
 
     public void setTripTypeId(String tripTypeId) {
-        this.tripTypeId = tripTypeId;
+        this.TripTypeId = tripTypeId;
     }
 
     @Basic
     @Column(name = "PackageId")
     public Integer getPackageId() {
-        return packageId;
+        return PackageId;
     }
 
     public void setPackageId(Integer packageId) {
-        this.packageId = packageId;
+        this.PackageId = packageId;
     }
 }
