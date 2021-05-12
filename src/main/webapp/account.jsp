@@ -117,7 +117,6 @@
     </div>
     <p id="updateMsg" class="text-danger"></p>
 </div>
-
 <jsp:include page="footer.jsp"></jsp:include>
 
 </body>

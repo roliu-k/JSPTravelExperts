@@ -1,7 +1,9 @@
 package com.example.JSPTravelExperts;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import model.Customer;
+import org.json.JSONObject;
 import org.springframework.security.access.annotation.Secured;
 
 import javax.annotation.security.DenyAll;
@@ -22,7 +24,10 @@ public class AccountResource {
     @Produces(MediaType.APPLICATION_JSON)
     public String getAccount(@FormParam("token") String token) {
 
-        int customerID = Integer.parseInt(TokenResource.verifyToken(token));
+        String custStr = TokenResource.verifyToken(token);
+        JSONObject jsonObj = new JSONObject(custStr);
+
+        int customerID = jsonObj.getInt("CustomerID");
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("default");
         EntityManager em = factory.createEntityManager();
         TypedQuery<Customer> query = em.createQuery("select c from Customer c where c.customerId =:customerID", Customer.class);
