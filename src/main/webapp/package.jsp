@@ -26,13 +26,23 @@
     $.get("api/packages/getallpackages", function (data) {
         var i;
         for (i = 0; i < data.length; i++) {
-            $("#packages").append("<div class='col'><div class='card package-card'> <div class='card-image'><img class='card-img-top img-fluid' src='" +
-                "images/Caribbean.jpg' " +
-                "alt='Caribbean'> <div class='dark-overlay'></div></div>" +
+            $("#packages").append("<div class='col'><div class='card package-card'> " +
+                "<div class='card-image' style='height:13.25rem'>" +
+                "<img class='card-img-top' src='" + data[i].Picture + "'>" +
+                "<div class='dark-overlay'></div></div>" +
                 "<div class='card-body text-light'> <h5 class='card-title'>" +
                 data[i].PkgName + "</h5> " +
                 "<p class='card-text' style='min-height: 50px'>" + data[i].PkgDesc + "</p>" +
-                "<a class='btn btn-secondary btn-sm'>More Details</a></div></div></div>");
+                "<form action='bookingdetail'><input type='hidden' name='packageId' id='pkgId' " +
+                "value='" + (i+1) + "'/>" +
+                "<button class='btn btn-secondary btn-sm' onclick='viewdetail()'>More Details</button>" +
+                "</form></div></div></div>");
         }
     });
+
+    function viewdetail()
+    {
+        $(this).siblings("form").submit();
+    }
+
 </script>
