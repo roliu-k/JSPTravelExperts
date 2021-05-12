@@ -107,6 +107,11 @@
         total += parseInt(data[i].PkgBasePrice);
       }
       $("#total").text(formatter.format(total));
+
+      // offer a separate list for users to delete those trips that have not been taken place yet
+
+
+
     });
   });
 

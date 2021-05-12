@@ -13,7 +13,7 @@
               <div class="card">
                   <div class="row g-0" style="min-height: 300px">
                       <div class="col-md-5">
-                          <img src="images/Santorini.jpg" alt="..." style="width:100%;height:100%">
+                          <img id="pkg-photo" style="height:300px">
                       </div>
                       <div class="col-md-7">
                           <div class="card-body">
@@ -92,6 +92,28 @@
           </div>
       </div>
       <jsp:include page="footer.jsp"></jsp:include>
+
+      <div id="login-section">
+          <div class="login-inner">
+              <div class="container">
+                  <div class="col-6 mx-auto">
+                      <h3 class="mb-3">Please login to purchase this package</h3>
+                      <form>
+                          <div class="form-group">
+                              <label for="username">Username</label>
+                              <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username">
+                          </div>
+                          <div class="form-group">
+                              <label for="password">Password</label>
+                              <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                              <small class="text-danger" id="errMsg"></small>
+                          </div>
+                      </form>
+                      <button class="btn btn-primary col-6 mt-2" id="authenticate">Submit</button>
+                  </div>
+              </div>
+          </div>
+      </div>
 </body>
 
 
@@ -129,6 +151,7 @@
         $("#price").text(formatter.format(data.PkgBasePrice));
         $("#startdate").text(toShortDate(startdate));
         $("#enddate").text(toShortDate(enddate));
+        $("#pkg-photo").attr("src", data.Picture);
     });
 
 
@@ -136,6 +159,7 @@
         // hide the book form by default
         $("#book-form").hide();
         $("#bookPackage").hide();
+        $("#login-section").hide();
 
         // add a new booking to the database
         $(document).on('click', '#bookPackage', function(){
@@ -179,6 +203,7 @@
             let token = sessionStorage.getItem("token");
             if (token  == null){
                 $("#bookMsg").text("Login to purchase this package");
+                $("#login-section").show();
             }
             else {
                 $.ajax({
@@ -195,4 +220,25 @@
             }
         });
     });
+
+    // script for validate user credential
+    var username = $("#username").val();
+    $("#authenticate").click(function(){
+        $.ajax({
+            type: "POST",
+            data: $('form').serializeArray(),
+            url: "api/authenticate/login/",
+            async: false,
+            success: function (data) {
+                if (data.Message == "Update unsuccessful"){
+                    $("#errMsg").text("You have entered either wrong username or password.");
+                }
+                else {
+                    sessionStorage.setItem("token", data.Token);
+                    $("#login-section").hide();
+                    location.reload(true);
+                }
+            }
+        });
+    })
 </script>

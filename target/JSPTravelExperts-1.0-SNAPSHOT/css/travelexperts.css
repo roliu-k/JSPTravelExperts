@@ -1,5 +1,5 @@
 .navbar {
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 body{
@@ -151,4 +151,13 @@ hr{
 
 .content-wrapper{
     min-height: calc(100vh - 90px);  /* plus 30 px margin on the top the horizontal line */
+}
+
+#login-section{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    background-color: #252833;
 }

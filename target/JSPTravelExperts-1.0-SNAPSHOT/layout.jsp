@@ -29,7 +29,7 @@
 
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
   <div class="container">
-    <a href="#" class="navbar-brand">Travel Experts LOGO</a>
+    <a href="index.jsp" class="navbar-brand"><img src="images/travel experts Logo.png" style="position:fixed; top: 0; height: 60px;"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
