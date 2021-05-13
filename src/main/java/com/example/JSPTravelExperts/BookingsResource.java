@@ -19,7 +19,7 @@ public class BookingsResource {
         try {
             DriverManager.registerDriver(new Driver());
             String sql = "SELECT * FROM bookings JOIN packages on bookings.PackageId = packages.PackageId " +
-                    "JOIN triptypes on bookings.TripTypeId = triptypes.TripTypeId where CustomerId = ?";
+                    "JOIN triptypes on bookings.TripTypeId = triptypes.TripTypeId where CustomerId = ? order by BookingDate desc";
             Connection con = DriverManager.getConnection("jdbc:mariadb://localhost:3306/travelexperts", "root", "");
 
             PreparedStatement stmt = con.prepareStatement(sql);
