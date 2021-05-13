@@ -20,7 +20,7 @@ public class BookingResources {
 
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("default");
         EntityManager em = factory.createEntityManager();
-        Query query = em.createQuery("select b from Bookings b where b.CustomerId =" + custID, Bookings.class);
+        Query query = em.createQuery("select b from Bookings b where b.customerId =" + custID, Bookings.class);
         List<Bookings> list = query.getResultList();
 
         Gson gson = new Gson();
@@ -51,12 +51,12 @@ public class BookingResources {
     }
 
     @DELETE
-    @Path("/deletebooking/{ custID }")
+    @Path("/deletebooking/{ bookingId }")
     @Consumes(MediaType.APPLICATION_JSON)
-    public String deletebooking(@PathParam("custID") int custID) {
+    public String deletebooking(@PathParam("bookingId") int bookingId) {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("default");
         EntityManager em = factory.createEntityManager();
-        Bookings bookings = em.find(Bookings.class, custID);
+        Bookings bookings = em.find(Bookings.class, bookingId);
         em.getTransaction().begin();
         em.remove(bookings);
         em.getTransaction().commit();

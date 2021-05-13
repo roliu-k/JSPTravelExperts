@@ -136,7 +136,6 @@
 
     // it works as following
     var pkgid = <%=request.getAttribute("packageId") %>;
-    console.log("the package id being passed is: " + pkgid);
 
     var formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -165,11 +164,6 @@
         $(document).on('click', '#bookPackage', function(){
             //get current date
             var today = new Date();
-            // var month = today.getUTCMonth() + 1;
-            // var day = today.getUTCDate();
-            // var year = today.getUTCFullYear();
-
-
             var travelerCount = $("#travelCount").val();
             var tripType = $("#tripType").val();
             var bookingNo =$("#bookingNo").val();

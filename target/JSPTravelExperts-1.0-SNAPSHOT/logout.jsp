@@ -3,13 +3,6 @@
     <jsp:param name="title" value="Logout"/>
 </jsp:include>
 
-<body>
-<div class="content-wrapper">
-    <h1>Logout was successful.</h1>
-</div>
-    <jsp:include page="footer.jsp"></jsp:include>
-</body>
-
 <script>
     $(document).ready(function(){
         debugger

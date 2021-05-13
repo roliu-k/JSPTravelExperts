@@ -12,6 +12,7 @@
 
 <div class="content-wrapper">
   <div class="table-inner container">
+      <h5 class="text-white">Past Trips</h5>
     <table class="table table-striped table-dark">
       <thead>
       <tr>
@@ -44,10 +45,49 @@
         </th>
       </tr>
       </thead>
-      <tbody id="table-content">
+      <tbody id="past-trips">
 
       </tbody>
     </table>
+      <hr>
+      <h5 class="text-white">Future Trips</h5>
+      <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+              <th>
+                  Booking Date
+              </th>
+              <th>
+                  Package Name
+              </th>
+              <th>
+                  Trip Start Date
+              </th>
+              <th>
+                  Trip End Date
+              </th>
+              <th>
+                  Price
+              </th>
+              <th>
+                  Traveler Count
+              </th>
+              <th>
+                  Trip Type
+              </th>
+              <th>
+                  Booking No.
+              </th>
+              <th></th>
+          </tr>
+          </thead>
+          <tbody id="future-trips">
+
+          </tbody>
+      </table>
+      <div>
+          <blockquote id="deleteMsg"></blockquote>
+      </div>
     <div class="row">
       <div class="col-8 text-right"><strong>Total: </strong></div>
       <div class="col-4" id="total"></div>
@@ -58,6 +98,23 @@
 <jsp:include page="footer.jsp"></jsp:include>
 
 <script>
+$(document).ready(function(){
+    // attach an event handler function for onclick events to the input button elements.
+    $(document.body).on( "click", "input[type='button']", function() {
+        debugger
+        let bookingId = $(this).siblings().val();  // find the value of bookingId
+        console.log(bookingId);
+        $.ajax({
+            url: 'api/bookings/deletebooking/' + bookingId,
+            type: 'DELETE',
+            success: function(result) {
+                $("#deleteMsg").val(result);
+                //reload the page
+                location.reload();
+            }
+        });
+    });
+});
 
   function toShortDate(date){
     year = date.getFullYear();
@@ -96,24 +153,41 @@
         var startdate = new Date(data[i].PkgStartDate);
         var enddate = new Date(data[i].PkgEndDate)
         var bookdate = new Date(data[i].BookingDate);
-        $("#table-content").append("<tr><td>"+ toShortDate(bookdate) +
+        var today = new Date();
+
+        if(startdate <= today) {
+            $("#past-trips").append("<tr><td>" + toShortDate(bookdate) +
                 "</td><td>" + data[i].PkgName +
                 "</td><td>" + toShortDate(startdate) +
                 "</td><td>" + toShortDate(enddate) +
                 "</td><td>" + formatter.format(data[i].PkgBasePrice) +
                 "</td><td>" + data[i].TravelerCount +
                 "</td><td>" + data[i].TTName +
-                "</td><td>" + data[i].BookingNo +"</td></tr>");
-        total += parseInt(data[i].PkgBasePrice);
+                "</td><td>" + data[i].BookingNo + "</td></tr>");
+            total += parseInt(data[i].PkgBasePrice);
+        }
+        else{
+            $("#future-trips").append(
+                "<tr><td>" + toShortDate(bookdate) +
+                "</td><td>" + data[i].PkgName +
+                "</td><td>" + toShortDate(startdate) +
+                "</td><td>" + toShortDate(enddate) +
+                "</td><td>" + formatter.format(data[i].PkgBasePrice) +
+                "</td><td>" + data[i].TravelerCount +
+                "</td><td>" + data[i].TTName +
+                "</td><td>" + data[i].BookingNo +
+                "</td><td>" + "<form><input type='text' value='"+ data[i].BookingId +"' hidden>" +
+                "<input type='button' value='Cancel' class='btn-primary'></form>" +
+                "</td></tr>");
+            total += parseInt(data[i].PkgBasePrice);
+        }
       }
+
       $("#total").text(formatter.format(total));
-
-      // offer a separate list for users to delete those trips that have not been taken place yet
-
-
 
     });
   });
+
 
 
 </script>

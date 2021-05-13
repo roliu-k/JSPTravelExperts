@@ -11,7 +11,7 @@
             <div class="container home-inner">
                 <div class="d-flex flex-column justify-content-center">
                     <h3 class="text-light display-4" id="welcomeMsg"></h3>
-                    <div class="card col-sm-6 col-8">
+                    <div class="card col-lg-6 col-10">
                         <div class="card-header">
                             <ul class="nav nav-tabs card-header-tabs">
                                 <li class="nav-item">
@@ -38,7 +38,9 @@
                             </button>
                         </div>
                     </div>
-                    <button class="btn btn-primary mt-4 align-self-start">Explore more</button>
+                    <a href="package.jsp">
+                        <button class="btn btn-primary mt-4 align-self-start" >Explore more</button>
+                    </a>
                 </div>
             </div>
         </div>
