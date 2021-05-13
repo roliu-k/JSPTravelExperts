@@ -5,115 +5,115 @@
 <%@ page import="com.example.JSPTravelExperts.BookingNoGenerator" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <jsp:include page="layout.jsp">
-  <jsp:param name="title" value="Book"/>
+    <jsp:param name="title" value="Book"/>
 </jsp:include>
 <body>
-      <div class="container content-wrapper">
-          <div class="container mb-5" style="padding-top:160px">
-              <div class="card">
-                  <div class="row g-0" style="min-height: 300px">
-                      <div class="col-md-5">
-                          <img id="pkg-photo" style="height:300px">
-                      </div>
-                      <div class="col-md-7">
-                          <div class="card-body">
-                              <h5 class="card-title" id="name"></h5>
-                              <div class="row">
-                                  <p class="card-text col-3"><i>Description: </i></p>
-                                  <p class="card-text col-9" id="description"></p>
-                              </div>
-                              <div class="row">
-                                  <p class="card-text col-3"><i>Price: </i></p>
-                                  <p class="card-text col-9" id="price"></p>
-                              </div>
-                              <div class="row">
-                                  <p class="card-text col-3"><i>Start Date: </i></p>
-                                  <p class="card-text col-9" id="startdate"></p>
-                              </div>
-                              <div class="row">
-                                  <p class="card-text col-3"><i>End Date: </i></p>
-                                  <p class="card-text col-9" id="enddate"></p>
-                              </div>
-                              <button class="btn btn-primary btn-sm mt-4 col-4" id="book-button">Book</button>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
+<div class="container content-wrapper">
+    <div class="container mb-5" style="padding-top:160px">
+        <div class="card">
+            <div class="row g-0" style="min-height: 300px">
+                <div class="col-md-5">
+                    <img id="pkg-photo" style="height:300px">
+                </div>
+                <div class="col-md-7">
+                    <div class="card-body">
+                        <h5 class="card-title" id="name"></h5>
+                        <div class="row">
+                            <p class="card-text col-3"><i>Description: </i></p>
+                            <p class="card-text col-9" id="description"></p>
+                        </div>
+                        <div class="row">
+                            <p class="card-text col-3"><i>Price: </i></p>
+                            <p class="card-text col-9" id="price"></p>
+                        </div>
+                        <div class="row">
+                            <p class="card-text col-3"><i>Start Date: </i></p>
+                            <p class="card-text col-9" id="startdate"></p>
+                        </div>
+                        <div class="row">
+                            <p class="card-text col-3"><i>End Date: </i></p>
+                            <p class="card-text col-9" id="enddate"></p>
+                        </div>
+                        <button class="btn btn-primary btn-sm mt-4 col-4" id="book-button">Book</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-              <div class="container">
-              <form id="book-form">
-                  <input class="form-control" type="text" id='custID' hidden>
-                  <div class="row justify-content-center">
-                      <div class="form-group col-md-4">
-                          <label class="control-label">Booking No</label>
-                          <input class="form-control" type="text" id='bookingNo' value="<%
+    <div class="container">
+        <form id="book-form">
+            <input class="form-control" type="text" id='custID' hidden>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-4">
+                    <label class="control-label">Booking No</label>
+                    <input class="form-control" type="text" id='bookingNo' value="<%
                                 out.print(BookingNoGenerator.generateBookingNo());
                           %>" disabled>
-                          <span class="text-light"></span>
-                      </div>
-                      <div class="form-group col-md-4">
-                          <label class="control-label">Traveler Count</label>
-                          <select class="form-control" type="text" id="travelCount">
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                              <option value="6">6</option>
-                              <option value="7">7</option>
-                              <option value="8">8</option>
-                              <option value="9">9</option>
-                              <option value="10">10</option>
-                          </select>
-                          <span class="text-light"></span>
-                      </div>
+                    <span class="text-light"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label class="control-label">Traveler Count</label>
+                    <select class="form-control" type="text" id="travelCount">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <span class="text-light"></span>
+                </div>
 
-                      <div class="form-group col-md-4">
-                          <label class="control-label">Trip Type</label>
-                          <select class="form-control" type="text" id="tripType">
-                              <option value="B">Business</option>
-                              <option value="G">Group</option>
-                              <option value="L">Leisure</option>
-                          </select>
-                          <span class="text-light"></span>
-                      </div>
+                <div class="form-group col-md-4">
+                    <label class="control-label">Trip Type</label>
+                    <select class="form-control" type="text" id="tripType">
+                        <option value="B">Business</option>
+                        <option value="G">Group</option>
+                        <option value="L">Leisure</option>
+                    </select>
+                    <span class="text-light"></span>
+                </div>
 
-                  </div>
-              </form>
-              <div class="row justify-content-center">
-                  <div class="form-group" action="#">
-                      <input type="submit" value="Purchase" id="bookPackage" class="btn btn-primary" />
-                  </div>
-              </div>
-              <div class="row justify-content-center">
-                  <p id="bookMsg" class="lead"> </p>
-              </div>
-          </div>
-      </div>
-      <jsp:include page="footer.jsp"></jsp:include>
+            </div>
+        </form>
+        <div class="row justify-content-center">
+            <div class="form-group" action="#">
+                <input type="submit" value="Purchase" id="bookPackage" class="btn btn-primary" />
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <p id="bookMsg" class="lead"> </p>
+        </div>
+    </div>
+</div>
+<jsp:include page="footer.jsp"></jsp:include>
 
-      <div id="login-section">
-          <div class="login-inner">
-              <div class="container">
-                  <div class="col-6 mx-auto">
-                      <h3 class="mb-3">Please login to purchase this package</h3>
-                      <form>
-                          <div class="form-group">
-                              <label for="username">Username</label>
-                              <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username">
-                          </div>
-                          <div class="form-group">
-                              <label for="password">Password</label>
-                              <input type="password" class="form-control" id="password" placeholder="Password" name="password">
-                              <small class="text-danger" id="errMsg"></small>
-                          </div>
-                      </form>
-                      <button class="btn btn-primary col-6 mt-2" id="authenticate">Submit</button>
-                  </div>
-              </div>
-          </div>
-      </div>
+<div id="login-section">
+    <div class="login-inner">
+        <div class="container">
+            <div class="col-6 mx-auto">
+                <h3 class="mb-3">Please login to purchase this package</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                        <small class="text-danger" id="errMsg"></small>
+                    </div>
+                </form>
+                <button class="btn btn-primary col-6 mt-2" id="authenticate">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 
 
@@ -172,7 +172,7 @@
 
             var travelerCount = $("#travelCount").val();
             var tripType = $("#tripType").val();
-            var bookingNo =$("#BookingNoGenerator").val();
+            var bookingNo =$("#bookingNo").val();
             var custID =$("#custID").val();
 
             let addData= {
@@ -236,7 +236,7 @@
                 else {
                     sessionStorage.setItem("token", data.Token);
                     $("#login-section").hide();
-                    location.reload(true);
+                    location.reload();
                 }
             }
         });

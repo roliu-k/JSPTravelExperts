@@ -115,7 +115,7 @@
             <input type="submit" value="Update" id="updateCust" class="btn btn-primary" style="width:12rem"/>
         </div>
     </div>
-    <p id="updateMsg" class="text-danger"></p>
+    <p id="updateMsg" class="text-danger text-center"></p>
 </div>
 <jsp:include page="footer.jsp"></jsp:include>
 
