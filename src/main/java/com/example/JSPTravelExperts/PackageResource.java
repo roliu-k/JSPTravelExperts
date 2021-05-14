@@ -7,7 +7,7 @@ import org.mariadb.jdbc.Driver;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.*;
-
+// Written by Grayson
 @Path("/packages")
 public class PackageResource {
     @GET

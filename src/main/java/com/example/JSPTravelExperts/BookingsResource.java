@@ -8,6 +8,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.*;
 
+// Written by Grayson
 @Path("/bookingdetails")
 public class BookingsResource {
     @GET
