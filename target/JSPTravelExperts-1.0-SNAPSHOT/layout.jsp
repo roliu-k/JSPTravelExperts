@@ -7,7 +7,9 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<%--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>--%>
+
+<%--The general layout page contains navbar and it is being used in every single jsp page - Done by Ronnie --%>
+
 <!DOCTYPE HTML>
 <html>
 <!DOCTYPE html>
@@ -60,6 +62,7 @@
 </html>
 
 <script>
+  // make logout and account nav items visible once the user is logged in -- done by Julie
   $(document).ready(function(){
     //Customers has not been authenticated
     if (sessionStorage.getItem("token") == null){

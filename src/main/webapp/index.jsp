@@ -4,13 +4,14 @@
     <jsp:param name="title" value="Home"/>
 </jsp:include>
 
+<%--The home page is done by Ronnie. It contains the hero header and a recommendation list for packages--%>
 <body>
 <div class="content-wrapper">
     <header class="home-section">
         <div class="dark-overlay">
             <div class="container home-inner">
                 <div class="d-flex flex-column justify-content-center">
-                    <h3 class="text-light display-4" id="welcomeMsg"></h3>
+                    <h3 class="text-light display-4">Welcome to Travel Experts</h3>
                     <div class="card col-lg-6 col-10">
                         <div class="card-header">
                             <ul class="nav nav-tabs card-header-tabs">
@@ -52,9 +53,6 @@
         <div class="package-area">
             <div class='row row-cols-1 row-cols-md-3 align-items-center justify-content-center'>
             </div>
-    <%--        <form action="bookingdetail">--%>
-    <%--            <input type="hidden" name="packageId" id="pkgId" value="" />--%>
-    <%--        </form>--%>
         </div>
     </div>
 </div>
@@ -62,13 +60,14 @@
 </body>
 
 
-
 <script>
 
+    // grab the first six packages to display as popular packages
     $.get("api/packages/getallpackages", function (data){
         var i;
 
         for(i=0; i<6; i++){
+            // append a new card to the popular package area
             $(".row").append("<div class='col'> <div class='card package-card' style='height: 13.25rem'>" +
                 "<img class='card-img' src='" + data[i].Picture + "'>" +
                 "<div class='card-img-overlay text-center text-light pt-4'>" +
@@ -82,21 +81,10 @@
         }
     });
 
+    // send the packageId to bookservlet and then redirect user to booking detail page
     function viewdetail()
     {
         $(this).siblings("form").submit();
     }
 
-
-    $(document).ready(function(){
-        //Customers has not been authenticated
-        if (sessionStorage.getItem("token") == null){
-            $("#welcomeMsg").text("Welcome to Travel Experts");
-        }
-        //Customers has been authenticated
-        // else{
-        //     var username =  sessionStorage.getItem("username")
-        //     $("#welcomeMsg").text("Welcome " + username);
-        // }
-    });
 </script>

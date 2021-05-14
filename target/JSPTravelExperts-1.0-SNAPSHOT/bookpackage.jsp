@@ -7,7 +7,11 @@
 <jsp:include page="layout.jsp">
     <jsp:param name="title" value="Book"/>
 </jsp:include>
+
+<%--The card to display details of booking is made by Ronnie and Julie made the view for booking the package--%>
 <body>
+
+<%--The card view to contain the image and details of the booking--%>
 <div class="container content-wrapper">
     <div class="container mb-5" style="padding-top:160px">
         <div class="card">
@@ -41,6 +45,7 @@
         </div>
     </div>
 
+    <%--The booking form for customer to book a new package--%>
     <div class="container">
         <form id="book-form">
             <input class="form-control" type="text" id='custID' hidden>
@@ -119,6 +124,7 @@
 
 <script>
 
+    // convert date to YYYY-MM-DD format - Ronnie
     function toShortDate(date){
         year = date.getFullYear();
         month = date.getMonth()+1;
@@ -130,18 +136,19 @@
         if (month < 10) {
             month = '0' + month;
         }
-
         return (year+'-' + month + '-'+dt);
     }
 
-    // it works as following
+    // get the package id from request that has been passed to servlet - done by Ronnie
     var pkgid = <%=request.getAttribute("packageId") %>;
 
+    // created the formatter used to display the price as currency
     var formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
     });
 
+    // call the api to get the entire representation of the package and assign them to the proper fields in the view - done by Ronnie
     $.get("api/packages/getpackage/"+ pkgid, function (data){
         var startdate = new Date(data.PkgEndDate);
         var enddate = new Date(data.PkgEndDate)
@@ -153,14 +160,13 @@
         $("#pkg-photo").attr("src", data.Picture);
     });
 
-
     $(document).ready(function(){
         // hide the book form by default
         $("#book-form").hide();
         $("#bookPackage").hide();
         $("#login-section").hide();
 
-        // add a new booking to the database
+        // attach an event handler to the button that adds a new booking to the database - done by Julie
         $(document).on('click', '#bookPackage', function(){
             //get current date
             var today = new Date();
@@ -177,8 +183,8 @@
                 TripTypeId : tripType,
                 PackageId : pkgid
             }
-            console.log(addData);
 
+            // call the addbooking api to insert a new record of booking to the database
             $.ajax({
                 type: "POST",
                 url: "api/bookings/addbooking",
@@ -191,12 +197,14 @@
             });
         });
 
+        /* check whether user is logged in or not. The customer is only allowed to book a package after logging in.
+        The user credential is checked by the JWT token verification - done by Ronnie
+         */
         $("#book-button").click(function (){
 
-            // get the customer id from the token if the customer has logged in. If not, return a message asking user to login
+            // get the customer id from the token if the customer has logged in. If not, show the login section to ask user to login.
             let token = sessionStorage.getItem("token");
             if (token  == null){
-                $("#bookMsg").text("Login to purchase this package");
                 $("#login-section").show();
             }
             else {
@@ -215,7 +223,7 @@
         });
     });
 
-    // script for validate user credential
+    // validate user credential - written by Julie
     var username = $("#username").val();
     $("#authenticate").click(function(){
         $.ajax({

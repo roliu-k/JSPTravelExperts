@@ -10,7 +10,7 @@
     <jsp:param name="title" value="Packages"/>
 </jsp:include>
 
-
+<%--The package page is done by Ronnie. It mainly lists all the packages for customers to select.--%>
 <div class="content-wrapper">
     <div class="container packages-section">
         <h3 class="container-fluid"><i class="fas fa-suitcase fa-sm pr-2"></i>Packages</h3>
@@ -23,9 +23,11 @@
 </body>
 
 <script>
+    // reach out to the api to grab all the packages from the database and fill out necessary info to the view
     $.get("api/packages/getallpackages", function (data) {
         var i;
         for (i = 0; i < data.length; i++) {
+            // append a new card package view to the package area
             $("#packages").append("<div class='col'><div class='card package-card'> " +
                 "<div class='card-image' style='height:13.25rem'>" +
                 "<img class='card-img-top' src='" + data[i].Picture + "'>" +
@@ -40,6 +42,7 @@
         }
     });
 
+    // send the packageId to booking servlet and redirect user to bookpackage page
     function viewdetail()
     {
         $(this).siblings("form").submit();

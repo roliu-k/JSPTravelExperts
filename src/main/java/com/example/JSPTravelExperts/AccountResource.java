@@ -15,6 +15,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.Enumeration;
 
+// Julie's work
 
 @Path("/customers")
 public class AccountResource {
@@ -24,10 +25,12 @@ public class AccountResource {
     @Produces(MediaType.APPLICATION_JSON)
     public String getAccount(@FormParam("token") String token) {
 
+        // get customer id from the token
         String custStr = TokenResource.verifyToken(token);
         JSONObject jsonObj = new JSONObject(custStr);
-
         int customerID = jsonObj.getInt("CustomerID");
+
+        // connect to the database and return the customer object.
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("default");
         EntityManager em = factory.createEntityManager();
         TypedQuery<Customer> query = em.createQuery("select c from Customer c where c.customerId =:customerID", Customer.class);
@@ -43,6 +46,7 @@ public class AccountResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String updateAccount(String jsonString) {
+        // connect to database and return the message string whether it is being updated successfully or not
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("default");
         EntityManager em = factory.createEntityManager();
         Gson gson = new Gson();

@@ -16,6 +16,7 @@ import javax.ws.rs.core.MediaType;
 import javax.xml.stream.XMLStreamReader;
 @Path("/token")
 
+// Julie's work
 public class TokenResource {
     @POST
     @Path("/verify")
@@ -30,8 +31,8 @@ public class TokenResource {
                     .withIssuer("auth0")
                     .build(); //Reusable verifier instance
             DecodedJWT decodedJWT = verifier.verify(token);
+            // get the customer id value from the token and return it with its name as json string
             customerID = decodedJWT.getClaim("customerID").asInt();
-
             JsonObject custId = new JsonObject();
             custId.addProperty("CustomerID", customerID);
             return custId.toString();

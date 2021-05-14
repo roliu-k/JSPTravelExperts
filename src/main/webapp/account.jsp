@@ -3,6 +3,10 @@
     <jsp:param name="title" value="Account"/>
 </jsp:include>
 
+<%--The account page contains the form to display all the fields of user information and
+allows user to update the information.
+The view is designed by Ronnie and Julie and script is written by Julie.
+--%>
 <body>
 <div class="container pt-4">
 
@@ -123,6 +127,7 @@
 
 <script>
 
+    // call the api to retrieve all the properties for the customer using the token stored in the session
     $(document).ready(function(){
         let token = sessionStorage.getItem("token");
         $.ajax({
@@ -148,6 +153,7 @@
         });
     });
 
+    // get the data from input fields and pass it to the api to update the customer entity
     $(document).ready(function(){
         $(document).on('click', '#updateCust', function(){
             var custID = $("#custID").val();

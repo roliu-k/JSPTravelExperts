@@ -3,6 +3,8 @@
     <jsp:param name="title" value="Error"/>
 </jsp:include>
 
+<%--The error page is done by Julie--%>
+
 <body>
 <div class="content-wrapper">
     <p> this is an error page</p>

@@ -3,6 +3,8 @@
     <jsp:param name="title" value="Logout"/>
 </jsp:include>
 
+<%--The logout page is used to clear the token and other items that has stored in the session - Done by Julie--%>
+
 <script>
     $(document).ready(function(){
         debugger

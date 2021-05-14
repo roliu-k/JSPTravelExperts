@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
+// Done by Ricky and Grayson
+
 public class BookingNoGenerator {
     public static String generateBookingNo()
     {
