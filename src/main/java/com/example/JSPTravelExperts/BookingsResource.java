@@ -11,6 +11,8 @@ import java.sql.*;
 // Written by Grayson
 @Path("/bookingdetails")
 public class BookingsResource {
+
+    // Produces a jsonArray of all the bookings for a given customerId
     @GET
     @Path("/getbookingsbyid/{ custId }")
     @Produces(MediaType.APPLICATION_JSON)

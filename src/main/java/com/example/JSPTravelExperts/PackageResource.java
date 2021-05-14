@@ -10,6 +10,8 @@ import java.sql.*;
 // Written by Grayson
 @Path("/packages")
 public class PackageResource {
+
+    // Produces a jsonArray of all packages from the database
     @GET
     @Path("/getallpackages")
     @Produces(MediaType.APPLICATION_JSON)
@@ -40,6 +42,7 @@ public class PackageResource {
         return response;
     }
 
+    // Produce a single jsonObject for a package using a given packageId
     @GET
     @Path("/getpackage/{ packageId }")
     @Produces(MediaType.APPLICATION_JSON)
