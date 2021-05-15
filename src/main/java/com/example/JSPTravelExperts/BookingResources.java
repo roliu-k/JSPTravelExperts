@@ -3,7 +3,6 @@ package com.example.JSPTravelExperts;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import model.Bookings;
-import model.Customer;
 
 import javax.persistence.*;
 import javax.ws.rs.*;
@@ -12,9 +11,12 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 
-
+//done by Julie
 @Path("/bookings")
 public class BookingResources {
+    //get booking based on customer that's been logged in
+    //parameters: customer ID
+    //returns: GSON object of customer's booking
     @GET
     @Path("getbookings/{ custID }")
     @Produces(MediaType.APPLICATION_JSON)
@@ -23,14 +25,17 @@ public class BookingResources {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("default");
         EntityManager em = factory.createEntityManager();
         Query query = em.createQuery("select b from Bookings b where b.customerId =" + custID, Bookings.class);
+        //get a list of bookings
         List<Bookings> list = query.getResultList();
-
         Gson gson = new Gson();
         Type type = new TypeToken<List<Bookings>>(){}.getType();
 
         return gson.toJson(list, type);
-
     }
+
+    //add bookings to customer
+    //parameters: JSON string of package selected for bookings
+    //returns: success message
     @POST
     @Path("/addbooking")
     @Consumes (MediaType.APPLICATION_JSON)
@@ -52,6 +57,9 @@ public class BookingResources {
 
     }
 
+    //delete bookings for package
+    //parameters: booking ID
+    //returns: success message
     @DELETE
     @Path("/deletebooking/{ bookingId }")
     @Consumes(MediaType.APPLICATION_JSON)

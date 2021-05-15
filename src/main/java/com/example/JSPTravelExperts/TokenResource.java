@@ -17,7 +17,12 @@ import javax.xml.stream.XMLStreamReader;
 @Path("/token")
 
 // Julie's work
+//Token Resource for JWT
 public class TokenResource {
+
+    //Verifies token by applying algorithm
+    //parameters: token
+    //returns: customer ID
     @POST
     @Path("/verify")
     @Produces(MediaType.APPLICATION_JSON)

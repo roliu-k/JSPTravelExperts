@@ -1,31 +1,25 @@
 package com.example.JSPTravelExperts;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import model.Customer;
 import org.json.JSONObject;
-import org.springframework.security.access.annotation.Secured;
-
-import javax.annotation.security.DenyAll;
 import javax.persistence.*;
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpSessionContext;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.Enumeration;
+
 
 // Julie's work
 
 @Path("/customers")
 public class AccountResource {
-
+    // parameter: token
+    // returns JSON object of customer's information
     @POST
     @Path("/getaccount")
     @Produces(MediaType.APPLICATION_JSON)
     public String getAccount(@FormParam("token") String token) {
 
-        // get customer id from the token
+        // get customer id after verifying token
         String custStr = TokenResource.verifyToken(token);
         JSONObject jsonObj = new JSONObject(custStr);
         int customerID = jsonObj.getInt("CustomerID");
@@ -40,7 +34,8 @@ public class AccountResource {
         return new Gson().toJson(customer);
     }
 
-
+    //parameters: JSON object of customer's information
+    //returns: success message.
     @PUT
     @Path("/updateaccount")
     @Produces(MediaType.APPLICATION_JSON)
@@ -51,10 +46,13 @@ public class AccountResource {
         EntityManager em = factory.createEntityManager();
         Gson gson = new Gson();
         Customer customer = gson.fromJson(jsonString, Customer.class);
+
+        //update customer's account
         em.getTransaction().begin();
         Customer result = em.merge(customer);
         em.getTransaction().commit();
 
+        //returns message
         if (result != null){
             return "{\"message\" : \"Update Successful\"}";
         }
